@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>З Днем Народження, Тату!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,400&family=Unbounded:wght@300;700;900&display=swap" rel="stylesheet">
+<style>
+
+/* ─── Reset ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* ─── Palette ─── */
+:root {
+  --gold:    #f5c842;
+  --rose:    #e8587a;
+  --violet:  #7c3aed;
+  --deep:    #0c0518;
+  --mid:     #1a0b2e;
+  --lav:     #c8a8f0;
+}
+
+body {
+  background: var(--deep);
+  color: #fff;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  overflow-x: hidden;
+}
+
+/* ─── Stars (pure CSS) ─── */
+.stars {
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.stars::before,
+.stars::after,
+.stars .s3 {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(1px 1px at  8%  12%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 17%  44%, #fff 0%, transparent 100%),
+    radial-gradient(2px 2px at 26%   7%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 34%  61%, #fff 0%, transparent 100%),
+    radial-gradient(2px 2px at 42%  29%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 51%  80%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 58%  18%, #fff 0%, transparent 100%),
+    radial-gradient(2px 2px at 67%  52%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 74%  37%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 82%  72%, #fff 0%, transparent 100%),
+    radial-gradient(2px 2px at 91%   4%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 96%  88%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at  3%  95%, #fff 0%, transparent 100%),
+    radial-gradient(2px 2px at 13%  65%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 22%  83%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 48%  55%, #fff 0%, transparent 100%),
+    radial-gradient(2px 2px at 71%  15%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 88%  42%, #fff 0%, transparent 100%);
+  animation: twinkle1 4s ease-in-out infinite alternate;
+}
+.stars::after {
+  background-image:
+    radial-gradient(1px 1px at 15%  30%, #fde68a 0%, transparent 100%),
+    radial-gradient(2px 2px at 32%  74%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 47%  10%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 63%  90%, #fde68a 0%, transparent 100%),
+    radial-gradient(2px 2px at 79%  48%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 93%  25%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at  6%  68%, #fde68a 0%, transparent 100%),
+    radial-gradient(2px 2px at 55%  38%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 85%  77%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 38%  92%, #fde68a 0%, transparent 100%);
+  animation: twinkle2 5.5s ease-in-out infinite alternate;
+}
+.stars .s3 {
+  background-image:
+    radial-gradient(1px 1px at 20%  50%, #c8a8f0 0%, transparent 100%),
+    radial-gradient(1px 1px at 40%  20%, #fff 0%, transparent 100%),
+    radial-gradient(2px 2px at 60%  70%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at 77%  35%, #c8a8f0 0%, transparent 100%),
+    radial-gradient(1px 1px at 90%  60%, #fff 0%, transparent 100%),
+    radial-gradient(1px 1px at  5%  40%, #fff 0%, transparent 100%),
+    radial-gradient(2px 2px at 50%   5%, #fde68a 0%, transparent 100%),
+    radial-gradient(1px 1px at 70%  85%, #fff 0%, transparent 100%);
+  animation: twinkle1 3.2s 1s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle1 {
+  from { opacity: .3; }
+  to   { opacity: 1; }
+}
+@keyframes twinkle2 {
+  from { opacity: .5; }
+  to   { opacity: .15; }
+}
+
+/* ─── Balloons ─── */
+.balloons {
+  position: fixed; inset: 0; z-index: 1;
+  pointer-events: none; overflow: hidden;
+}
+.balloon {
+  position: absolute;
+  bottom: -120px;
+  width: 50px; height: 65px;
+  border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%;
+  animation: floatUp linear infinite;
+}
+.balloon::after {
+  content: '';
+  position: absolute;
+  bottom: -20px; left: 50%;
+  transform: translateX(-50%);
+  width: 1px; height: 22px;
+  background: rgba(255,255,255,.35);
+}
+.balloon:nth-child(1)  { left:5%;  background:#e8587a; animation-duration:9s;  animation-delay:0s; }
+.balloon:nth-child(2)  { left:12%; background:#f5c842; animation-duration:11s; animation-delay:2s; width:38px;height:50px; }
+.balloon:nth-child(3)  { left:22%; background:#7c3aed; animation-duration:8s;  animation-delay:5s; }
+.balloon:nth-child(4)  { left:32%; background:#06b6d4; animation-duration:12s; animation-delay:1s; width:44px;height:58px; }
+.balloon:nth-child(5)  { left:44%; background:#4ade80; animation-duration:10s; animation-delay:3s; }
+.balloon:nth-child(6)  { left:56%; background:#f59e0b; animation-duration:9s;  animation-delay:7s; width:42px;height:56px; }
+.balloon:nth-child(7)  { left:66%; background:#c8a8f0; animation-duration:13s; animation-delay:0.5s;}
+.balloon:nth-child(8)  { left:76%; background:#e8587a; animation-duration:10s; animation-delay:4s; width:38px;height:50px;}
+.balloon:nth-child(9)  { left:86%; background:#f5c842; animation-duration:8s;  animation-delay:6s; }
+.balloon:nth-child(10) { left:94%; background:#7c3aed; animation-duration:11s; animation-delay:2.5s; width:46px;height:60px; }
+
+@keyframes floatUp {
+  0%   { transform: translateX(0)   translateY(0)    rotate(-4deg); opacity: .9; }
+  25%  { transform: translateX(15px) translateY(-25vh) rotate(4deg); }
+  50%  { transform: translateX(-10px) translateY(-50vh) rotate(-4deg); opacity: .75; }
+  75%  { transform: translateX(12px) translateY(-75vh) rotate(4deg); }
+  100% { transform: translateX(0)   translateY(-115vh) rotate(-4deg); opacity: 0; }
+}
+
+/* ─── Confetti ─── */
+.confetti {
+  position: fixed; inset: 0; z-index: 1;
+  pointer-events: none; overflow: hidden;
+}
+.conf {
+  position: absolute;
+  top: -14px;
+  animation: confFall linear infinite;
+  opacity: 0;
+}
+.conf:nth-child(1)  { left:4%;  width:8px;height:8px;  background:#f5c842; border-radius:2px; animation-duration:7s;  animation-delay:0s; }
+.conf:nth-child(2)  { left:11%; width:6px;height:6px;  background:#e8587a; border-radius:50%; animation-duration:9s;  animation-delay:1.5s; }
+.conf:nth-child(3)  { left:19%; width:10px;height:5px; background:#7c3aed; animation-duration:6s;  animation-delay:3s; }
+.conf:nth-child(4)  { left:27%; width:7px;height:7px;  background:#06b6d4; border-radius:50%; animation-duration:8s;  animation-delay:0.8s; }
+.conf:nth-child(5)  { left:35%; width:8px;height:4px;  background:#4ade80; animation-duration:10s; animation-delay:2s; }
+.conf:nth-child(6)  { left:43%; width:6px;height:6px;  background:#f5c842; border-radius:2px; animation-duration:7s;  animation-delay:4.5s; }
+.conf:nth-child(7)  { left:51%; width:9px;height:5px;  background:#e8587a; animation-duration:8s;  animation-delay:1s; }
+.conf:nth-child(8)  { left:59%; width:6px;height:6px;  background:#c8a8f0; border-radius:50%; animation-duration:11s; animation-delay:3.5s; }
+.conf:nth-child(9)  { left:67%; width:8px;height:8px;  background:#f59e0b; border-radius:2px; animation-duration:6s;  animation-delay:5s; }
+.conf:nth-child(10) { left:75%; width:7px;height:4px;  background:#7c3aed; animation-duration:9s;  animation-delay:0.3s; }
+.conf:nth-child(11) { left:83%; width:6px;height:6px;  background:#e8587a; border-radius:50%; animation-duration:7s;  animation-delay:2.8s; }
+.conf:nth-child(12) { left:91%; width:9px;height:5px;  background:#f5c842; animation-duration:8s;  animation-delay:1.8s; }
+.conf:nth-child(13) { left:8%;  width:5px;height:9px;  background:#4ade80; border-radius:1px; animation-duration:10s; animation-delay:6s; }
+.conf:nth-child(14) { left:48%; width:7px;height:7px;  background:#06b6d4; border-radius:50%; animation-duration:9s;  animation-delay:3.2s; }
+.conf:nth-child(15) { left:72%; width:8px;height:4px;  background:#c8a8f0; animation-duration:7s;  animation-delay:4s; }
+
+@keyframes confFall {
+  0%   { transform: translateY(0)    rotate(0deg);   opacity: 1; }
+  80%  { opacity: .8; }
+  100% { transform: translateY(105vh) rotate(680deg); opacity: 0; }
+}
+
+/* ─── All sections above bg ─── */
+.page { position: relative; z-index: 2; }
+
+/* ══════════════
+   HERO
+══════════════ */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* glowing orb behind */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 10%; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,58,237,.35) 0%, rgba(232,88,122,.1) 50%, transparent 70%);
+  animation: orbPulse 6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes orbPulse {
+  0%,100% { transform: translateX(-50%) scale(1); opacity: .7; }
+  50%      { transform: translateX(-50%) scale(1.15); opacity: 1; }
+}
+
+/* orbiting rings */
+.ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  border-radius: 50%;
+  border: 1px solid rgba(245,200,66,.2);
+  animation: spin linear infinite;
+  pointer-events: none;
+}
+.ring::before {
+  content: '';
+  position: absolute;
+  top: -7px; left: 50%;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 16px 5px rgba(245,200,66,.8);
+}
+.ring-1 { width:500px;height:500px; margin:-250px 0 0 -250px; animation-duration:28s; }
+.ring-2 { width:360px;height:360px; margin:-180px 0 0 -180px; animation-duration:18s; animation-direction:reverse; border-color:rgba(232,88,122,.25); }
+.ring-2::before { background:var(--rose); box-shadow:0 0 16px 5px rgba(232,88,122,.8); }
+.ring-3 { width:620px;height:620px; margin:-310px 0 0 -310px; animation-duration:38s; border-color:rgba(200,168,240,.2); }
+.ring-3::before { background:var(--lav); box-shadow:0 0 16px 5px rgba(200,168,240,.8); }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.eyebrow {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(.55rem, 2vw, .72rem);
+  font-weight: 300;
+  letter-spacing: .4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.4rem;
+  animation: fadeUp .9s ease both;
+}
+
+.hero-title {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.6rem, 11vw, 7.5rem);
+  line-height: .92;
+  animation: fadeUp .9s .12s ease both;
+}
+.hero-title .t1 {
+  display: block;
+  background: linear-gradient(90deg, var(--gold), #fff8d0 45%, var(--gold));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeUp .9s .12s ease both, shine 4s linear 1s infinite;
+}
+.hero-title .t2 { display:block; color:var(--rose); }
+.hero-title .t3 {
+  display: block;
+  font-size: .5em;
+  font-weight: 300;
+  color: var(--lav);
+  letter-spacing: .05em;
+  margin-top: .4em;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(30px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.hero-sub {
+  font-style: italic;
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  color: rgba(255,255,255,.6);
+  margin-top: 1.8rem;
+  animation: fadeUp .9s .3s ease both;
+}
+
+.scroll-arrow {
+  margin-top: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  animation: fadeUp .9s .5s ease both;
+}
+.scroll-arrow span {
+  font-family: 'Unbounded', sans-serif;
+  font-size: .58rem;
+  letter-spacing: .25em;
+  color: rgba(255,255,255,.3);
+}
+.scroll-arrow .bar {
+  width: 1px; height: 52px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: barGrow 1.8s 1s ease both;
+  transform-origin: top;
+}
+@keyframes barGrow {
+  from { transform: scaleY(0); opacity: 0; }
+  to   { transform: scaleY(1); opacity: 1; }
+}
+
+/* ══════════════
+   CAKE
+══════════════ */
+.cake-section {
+  padding: 6rem 1.5rem 5rem;
+  text-align: center;
+  background: radial-gradient(ellipse 75% 55% at 50% 50%, rgba(107,47,160,.28) 0%, transparent 70%);
+}
+
+.sec-label {
+  font-family: 'Unbounded', sans-serif;
+  font-size: .62rem;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: .9rem;
+}
+
+.sec-title {
+  font-size: clamp(1.8rem, 6vw, 3.6rem);
+  font-weight: 700;
+  margin-bottom: 3rem;
+}
+
+.cake-wrap {
+  display: inline-block;
+  filter: drop-shadow(0 0 55px rgba(245,200,66,.28));
+  animation: float 4.5s ease-in-out infinite;
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-18px); }
+}
+
+/* candle flames */
+.fl  { animation: flicker  .72s ease-in-out infinite alternate; transform-origin:50% 82%; }
+.fl2 { animation: flicker  .55s .14s ease-in-out infinite alternate; transform-origin:50% 82%; }
+.fl3 { animation: flicker  .88s .28s ease-in-out infinite alternate; transform-origin:50% 82%; }
+@keyframes flicker {
+  from { transform: scaleX(1) scaleY(1) rotate(-5deg); }
+  to   { transform: scaleX(.75) scaleY(1.2) rotate(5deg); }
+}
+
+/* ══════════════
+   WISHES
+══════════════ */
+.wishes-section {
+  padding: 5rem 1.5rem 6rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.wishes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.4rem;
+  margin-top: 2.5rem;
+}
+
+.wish-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  padding: 1.8rem 1.5rem;
+  transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease, background .35s ease;
+  position: relative;
+  overflow: hidden;
+}
+.wish-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(245,200,66,.07), transparent 65%);
+  opacity: 0;
+  transition: opacity .4s;
+}
+.wish-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(245,200,66,.4);
+  box-shadow: 0 28px 56px rgba(0,0,0,.45);
+  background: rgba(255,255,255,.07);
+}
+.wish-card:hover::after { opacity: 1; }
+
+.wish-icon {
+  font-size: 2.4rem;
+  display: block;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 8px rgba(245,200,66,.5));
+  animation: iconBounce 3s ease-in-out infinite;
+}
+.wish-card:nth-child(2) .wish-icon { animation-delay: .4s; }
+.wish-card:nth-child(3) .wish-icon { animation-delay: .8s; }
+.wish-card:nth-child(4) .wish-icon { animation-delay: 1.2s; }
+.wish-card:nth-child(5) .wish-icon { animation-delay: 1.6s; }
+.wish-card:nth-child(6) .wish-icon { animation-delay: 2s; }
+@keyframes iconBounce {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-5px); }
+}
+
+.wish-text {
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.65;
+  color: rgba(255,255,255,.82);
+}
+
+/* ══════════════
+   MESSAGE
+══════════════ */
+.message-section {
+  padding: 5rem 1.5rem 6rem;
+  text-align: center;
+  background: linear-gradient(to bottom, transparent, rgba(232,88,122,.06), transparent);
+}
+
+.msg-frame {
+  max-width: 680px;
+  margin: 0 auto;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(232,88,122,.22);
+  border-radius: 26px;
+  padding: 3rem 2.5rem;
+  position: relative;
+}
+.msg-frame::before {
+  content: '\201C';
+  position: absolute;
+  top: -.6rem; left: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 8rem;
+  line-height: 1;
+  color: var(--rose);
+  opacity: .15;
+}
+.msg-frame::after {
+  content: '\201D';
+  position: absolute;
+  bottom: -3rem; right: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 8rem;
+  line-height: 1;
+  color: var(--rose);
+  opacity: .15;
+}
+
+.msg-text {
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  line-height: 1.85;
+  color: rgba(255,255,255,.88);
+}
+
+.msg-sig {
+  margin-top: 2rem;
+  font-family: 'Unbounded', sans-serif;
+  font-size: .68rem;
+  letter-spacing: .25em;
+  color: var(--gold);
+}
+
+/* ══════════════
+   HEARTS
+══════════════ */
+.hearts-section {
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.hearts-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.heart {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  display: inline-block;
+  animation: heartbeat 1.3s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+.heart:nth-child(1) { animation-delay: 0s; }
+.heart:nth-child(2) { animation-delay: .18s; }
+.heart:nth-child(3) { animation-delay: .36s; }
+.heart:nth-child(4) { animation-delay: .54s; }
+.heart:nth-child(5) { animation-delay: .72s; }
+.heart:nth-child(6) { animation-delay: .90s; }
+.heart:nth-child(7) { animation-delay:1.08s; }
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  30%      { transform: scale(1.4); }
+  60%      { transform: scale(1); }
+  80%      { transform: scale(1.15); }
+}
+
+/* ══════════════
+   FOOTER
+══════════════ */
+footer {
+  position: relative; z-index: 2;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,.06);
+  font-family: 'Unbounded', sans-serif;
+  font-size: .58rem;
+  letter-spacing: .2em;
+  color: rgba(255,255,255,.18);
+}
+
+/* ══════════════
+   MOBILE
+══════════════ */
+@media (max-width: 520px) {
+  .ring { display: none; }
+  .msg-frame { padding: 2rem 1.2rem; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Stars -->
+<div class="stars" aria-hidden="true">
+  <div class="s3"></div>
+</div>
+
+<!-- Balloons -->
+<div class="balloons" aria-hidden="true">
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+</div>
+
+<!-- Confetti -->
+<div class="confetti" aria-hidden="true">
+  <div class="conf"></div><div class="conf"></div><div class="conf"></div>
+  <div class="conf"></div><div class="conf"></div><div class="conf"></div>
+  <div class="conf"></div><div class="conf"></div><div class="conf"></div>
+  <div class="conf"></div><div class="conf"></div><div class="conf"></div>
+  <div class="conf"></div><div class="conf"></div><div class="conf"></div>
+</div>
+
+<div class="page">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="ring ring-1" aria-hidden="true"></div>
+    <div class="ring ring-2" aria-hidden="true"></div>
+    <div class="ring ring-3" aria-hidden="true"></div>
+
+    <p class="eyebrow">🎉 Сьогодні особливий день</p>
+
+    <h1 class="hero-title">
+      <span class="t1">З Днем</span>
+      <span class="t2">Народження</span>
+      <span class="t3">Найкращий Тато на світі</span>
+    </h1>
+
+    <p class="hero-sub">
+      Нехай цей день сяє так само яскраво,<br>
+      як ти сяєш у нашому житті.
+    </p>
+
+    <div class="scroll-arrow">
+      <span>Гортай вниз</span>
+      <div class="bar"></div>
+    </div>
+  </section>
+
+  <!-- CAKE -->
+  <section class="cake-section">
+    <p class="sec-label">🕯️ Дмухай на свічки</p>
+    <h2 class="sec-title">Смачного торта, Тату!</h2>
+
+    <div class="cake-wrap" aria-label="Торт зі свічками">
+      <svg width="280" height="295" viewBox="0 0 280 295" xmlns="http://www.w3.org/2000/svg">
+        <!-- shadow -->
+        <ellipse cx="140" cy="283" rx="98" ry="9" fill="rgba(0,0,0,.4)"/>
+
+        <!-- bottom tier -->
+        <rect x="24" y="184" width="232" height="74" rx="18" fill="#c84b9e"/>
+        <rect x="24" y="184" width="232" height="22" rx="18" fill="#e060c8"/>
+        <ellipse cx="52"  cy="184" rx="16" ry="11" fill="#f5a8df"/>
+        <ellipse cx="88"  cy="184" rx="16" ry="11" fill="#f5a8df"/>
+        <ellipse cx="124" cy="184" rx="16" ry="11" fill="#f5a8df"/>
+        <ellipse cx="160" cy="184" rx="16" ry="11" fill="#f5a8df"/>
+        <ellipse cx="196" cy="184" rx="16" ry="11" fill="#f5a8df"/>
+        <ellipse cx="232" cy="184" rx="16" ry="11" fill="#f5a8df"/>
+        <circle cx="72"  cy="218" r="5" fill="#fde68a" opacity=".85"/>
+        <circle cx="108" cy="230" r="4" fill="#fff"    opacity=".5"/>
+        <circle cx="144" cy="216" r="6" fill="#fde68a" opacity=".85"/>
+        <circle cx="180" cy="228" r="4" fill="#fff"    opacity=".5"/>
+        <circle cx="216" cy="218" r="5" fill="#fde68a" opacity=".85"/>
+
+        <!-- middle tier -->
+        <rect x="48" y="116" width="184" height="70" rx="14" fill="#7c3aed"/>
+        <rect x="48" y="116" width="184" height="18" rx="14" fill="#9d5ef5"/>
+        <ellipse cx="76"  cy="116" rx="14" ry="9" fill="#c084fc"/>
+        <ellipse cx="108" cy="116" rx="14" ry="9" fill="#c084fc"/>
+        <ellipse cx="140" cy="116" rx="14" ry="9" fill="#c084fc"/>
+        <ellipse cx="172" cy="116" rx="14" ry="9" fill="#c084fc"/>
+        <ellipse cx="204" cy="116" rx="14" ry="9" fill="#c084fc"/>
+        <circle cx="92"  cy="148" r="4" fill="#fde68a" opacity=".7"/>
+        <circle cx="140" cy="156" r="5" fill="#fde68a" opacity=".7"/>
+        <circle cx="188" cy="147" r="4" fill="#fff"    opacity=".45"/>
+
+        <!-- top tier -->
+        <rect x="76" y="64" width="128" height="54" rx="13" fill="#f59e0b"/>
+        <rect x="76" y="64" width="128" height="14" rx="13" fill="#fbbf24"/>
+        <ellipse cx="100" cy="64" rx="13" ry="8" fill="#fde68a"/>
+        <ellipse cx="128" cy="64" rx="13" ry="8" fill="#fde68a"/>
+        <ellipse cx="156" cy="64" rx="13" ry="8" fill="#fde68a"/>
+        <ellipse cx="180" cy="64" rx="13" ry="8" fill="#fde68a"/>
+        <circle cx="116" cy="92"  r="4" fill="#c84b9e" opacity=".7"/>
+        <circle cx="164" cy="88"  r="3" fill="#7c3aed" opacity=".7"/>
+
+        <!-- candles -->
+        <rect x="104" y="46" width="10" height="20" rx="5" fill="#fde68a"/>
+        <rect x="135" y="38" width="10" height="28" rx="5" fill="#a5f3fc"/>
+        <rect x="166" y="46" width="10" height="20" rx="5" fill="#fca5a5"/>
+
+        <!-- flames -->
+        <g class="fl">
+          <ellipse cx="109" cy="40" rx="6.5" ry="9"   fill="#ff9500" opacity=".95"/>
+          <ellipse cx="109" cy="43" rx="4"   ry="5.5" fill="#ffe000"/>
+          <ellipse cx="109" cy="46" rx="2"   ry="2.8" fill="#fff"/>
+        </g>
+        <g class="fl2">
+          <ellipse cx="140" cy="31" rx="7.5" ry="10.5" fill="#ff6b00" opacity=".95"/>
+          <ellipse cx="140" cy="35" rx="4.5" ry="6.5"  fill="#ffe000"/>
+          <ellipse cx="140" cy="39" rx="2.2" ry="3.2"  fill="#fff"/>
+        </g>
+        <g class="fl3">
+          <ellipse cx="171" cy="40" rx="6.5" ry="9"   fill="#ff9500" opacity=".95"/>
+          <ellipse cx="171" cy="43" rx="4"   ry="5.5" fill="#ffe000"/>
+          <ellipse cx="171" cy="46" rx="2"   ry="2.8" fill="#fff"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- WISHES -->
+  <section class="wishes-section">
+    <p class="sec-label">💌 Побажання</p>
+    <h2 class="sec-title">Від щирого серця</h2>
+
+    <div class="wishes-grid">
+      <div class="wish-card">
+        <span class="wish-icon">💪</span>
+        <p class="wish-text">Міцного здоров'я та сили на кожен день попереду</p>
+      </div>
+      <div class="wish-card">
+        <span class="wish-icon">😊</span>
+        <p class="wish-text">Щастя, що переповнює серце з першої хвилини ранку</p>
+      </div>
+      <div class="wish-card">
+        <span class="wish-icon">⭐</span>
+        <p class="wish-text">Здійснення кожного бажання, що тільки прийде в голову</p>
+      </div>
+      <div class="wish-card">
+        <span class="wish-icon">🏠</span>
+        <p class="wish-text">Тепла вдома та любові рідних поруч завжди</p>
+      </div>
+      <div class="wish-card">
+        <span class="wish-icon">✈️</span>
+        <p class="wish-text">Нових пригод і незабутніх вражень у кожній подорожі</p>
+      </div>
+      <div class="wish-card">
+        <span class="wish-icon">🌟</span>
+        <p class="wish-text">Мирного неба та впевненості у прекрасному майбутньому</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MESSAGE -->
+  <section class="message-section">
+    <div class="msg-frame">
+      <p class="msg-text">
+        Тату, ти — наш герой, наш захисник і найдорожча людина.
+        Дякуємо тобі за все, що ти робиш для нас кожного дня.
+        Нехай цей рік принесе тобі лише радість,
+        а твоя усмішка ніколи не гасне.
+        Ми тебе дуже любимо!
+      </p>
+      <p class="msg-sig">— з любов'ю, твоя сім'я ❤️</p>
+    </div>
+  </section>
+
+  <!-- HEARTS -->
+  <section class="hearts-section">
+    <p class="sec-label">❤️ З любов'ю</p>
+    <div class="hearts-row">
+      <span class="heart">❤️</span>
+      <span class="heart">🧡</span>
+      <span class="heart">💛</span>
+      <span class="heart">💚</span>
+      <span class="heart">💙</span>
+      <span class="heart">💜</span>
+      <span class="heart">🤍</span>
+    </div>
+  </section>
+
+  <footer>
+    Зроблено з ❤️ спеціально для найкращого тата на світі
+  </footer>
+
+</div>
+</body>
+</html>
